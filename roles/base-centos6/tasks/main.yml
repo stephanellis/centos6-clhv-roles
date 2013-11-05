@@ -1,0 +1,35 @@
+---
+- name: add yum repos
+  action: copy src={{ item }} dest=/etc/yum.repos.d/
+  with_items:
+    - epel.repo
+  tags: repos
+
+- name: add gpg key for epel
+  action: copy src=RPM-GPG-KEY-EPEL-6 dest=/etc/pki/rpm-gpg/
+  tags: repos
+
+- name: install admin tools
+  action: yum name={{ item }} state=installed
+  with_items:
+    - vim-enhanced
+    - iptraf
+    - tcpdump
+    - iperf
+    - iftop
+    - lsof
+    - iotop
+    - nmap
+    - vconfig
+    - git
+    - screen
+    - pykickstart
+    - wget
+    - telnet
+    - ntp
+    - tree
+    - ebtables
+    - ethtool
+    - xfsprogs
+  tags: packages
+
