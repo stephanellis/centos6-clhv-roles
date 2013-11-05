@@ -1,0 +1,12 @@
+
+[lab:children]
+
+[lab:vars]
+cluster_name=KVMClusterA
+
+[hypervisors]
+clhv121 ansible_ssh_host=10.79.20.121
+clhv122 ansible_ssh_host=10.79.20.122
+
+[hypervisors:vars]
+ansible_ssh_user=root
