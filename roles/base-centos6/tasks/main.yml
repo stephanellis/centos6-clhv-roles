@@ -1,5 +1,5 @@
 ---
-- name: add yum repos
+- name: add epel repo
   action: copy src={{ item }} dest=/etc/yum.repos.d/
   with_items:
     - epel.repo
@@ -10,7 +10,7 @@
   tags: repos
 
 - name: install admin tools
-  action: yum name={{ item }} state=installed
+  yum: name={{ item }} state=installed
   with_items:
     - vim-enhanced
     - iptraf
@@ -33,3 +33,6 @@
     - xfsprogs
   tags: packages
 
+- name: ssmtp config
+  template: src=ssmtp.conf dest=/etc/ssmtp/
+  tags: configs ssmtp
