@@ -31,6 +31,7 @@
     - ebtables
     - ethtool
     - xfsprogs
+    - ssmtp
   tags: packages
 
 - name: ssmtp config
