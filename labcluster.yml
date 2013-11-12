@@ -1,6 +1,8 @@
 ---
 - hosts: lab
-  roles: base-centos6
+  roles:
+    - base-centos6
+    - hypervisor-centos6
   vars:
     ssmtp: #see ssmtp.conf for details
       mailhub: mx.google.com
