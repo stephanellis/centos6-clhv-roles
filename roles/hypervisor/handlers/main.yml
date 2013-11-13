@@ -1,0 +1,27 @@
+---
+- name: install hypervisor packages
+  yum: name={{ item }} state=installed
+  with_items:
+    - qemu-kvm
+    - libvirt
+    - libvirt-client
+    - libvirt-cim
+    - libvirt-snmp
+    - libvirt-python
+    - perl-Sys-Virt
+    - fence-virtd-libvirt
+    - fence-virtd-multicast
+    - fence-virtd-serial
+    - libguestfs-tools
+    - libguestfs-winsupport
+    - python-libguestfs
+    - virt-top
+    - python-virtinst
+  tags: packages
+
+- name: start and enable hypervisor services
+  service: name={{ item }} state=started enabled=yes
+  with_items:
+    - libvirtd
+    - libvirt-guests
+  tags: hypervisor services
