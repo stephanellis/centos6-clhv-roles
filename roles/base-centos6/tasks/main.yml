@@ -32,6 +32,7 @@
     - ethtool
     - xfsprogs
     - ssmtp
+    - lshw
   tags: packages
 
 - name: ssmtp config
