@@ -1,13 +1,17 @@
 ---
+- name: ansible dependencies
+  yum: name=libselinux-python state=installed
+  tags: [base, packages]
+
 - name: add epel repo
   action: copy src={{ item }} dest=/etc/yum.repos.d/
   with_items:
     - epel.repo
-  tags: repos
+  tags: [base, repos]
 
 - name: add gpg key for epel
   action: copy src=RPM-GPG-KEY-EPEL-6 dest=/etc/pki/rpm-gpg/
-  tags: repos
+  tags: [base, repos]
 
 - name: install admin tools
   yum: name={{ item }} state=installed
@@ -33,8 +37,23 @@
     - xfsprogs
     - ssmtp
     - lshw
-  tags: packages
+    - ntp
+  tags: [base, packages]
 
 - name: ssmtp config
   template: src=ssmtp.conf dest=/etc/ssmtp/
-  tags: configs ssmtp
+  tags: [base, configs]
+
+- name: setup ntp servers
+  template: src=ntp.conf dest=/etc/ntp.conf
+  notify: restart ntpd
+  tags: [base, configs]
+
+- name: start and enable services
+  service: name={{ item }} state=started enabled=yes
+  with_items:
+    - iptables
+    - ip6tables
+    - ebtables
+    - ntpd
+  tags: [base, services]

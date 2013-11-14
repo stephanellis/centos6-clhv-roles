@@ -7,7 +7,7 @@
     - libvirt-client
     - libvirt-cim
     - libvirt-snmp
-    - python-libvirt
+    - libvirt-python
     - perl-Sys-Virt
     - fence-virtd-libvirt
     - fence-virtd-multicast
@@ -17,11 +17,11 @@
     - python-libguestfs
     - virt-top
     - python-virtinst
-  tags: packages
+  tags: [hypervisor, packages]
 
 - name: start and enable hypervisor services
   service: name={{ item }} state=started enabled=yes
   with_items:
     - libvirtd
     - libvirt-guests
-  tags: hypervisor services
+  tags: [hypervisor, services]
