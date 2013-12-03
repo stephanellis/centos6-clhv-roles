@@ -1,0 +1,19 @@
+---
+- name: add glusterfs repo
+  copy: src=glusterfs-epel.repo dest=/etc/yum.repos.d/
+  tags: [glusterfs, server, repos]
+
+- name: add GPG key for glusterfs repo
+  copy: src=glusterfs.key dest=/etc/pki/rpm-gpg/
+  tags: [glusterfs, server, repos]
+
+- name: packages
+  yum: name={{ item }} state=installed
+  with_items:
+    - glusterfs-server
+    - glusterfs-cli
+  tags: [glusterfs, server, packages]
+
+- name: services
+  service: name=glusterd state=started enabled=yes
+  tags: [glusterfs, server, services]

@@ -13,7 +13,6 @@
     - fence-virtd-multicast
     - fence-virtd-serial
     - libguestfs-tools
-    - libguestfs-winsupport
     - python-libguestfs
     - virt-top
     - python-virtinst

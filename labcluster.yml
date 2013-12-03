@@ -3,6 +3,8 @@
   roles:
     - base-centos6
     - hypervisor
+    - glusterfs-server
+    - glusterfs-client
   vars:
     ssmtp: #see ssmtp.conf for details
       mailhub: mx.google.com

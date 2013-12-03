@@ -1,0 +1,9 @@
+---
+- name: add glusterfs repo
+  copy: src=glusterfs-epel.repo dest=/etc/yum.repos.d/
+  tags: [glusterfs, client, repos]
+
+- name: add GPG key for glusterfs repo
+  copy: src=glusterfs.key dest=/etc/pki/rpm-gpg/
+  tags: [glusterfs, client, repos]
+
