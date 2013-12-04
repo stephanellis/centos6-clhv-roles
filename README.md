@@ -13,3 +13,8 @@ repos - installs yum repo definitions and keys
 packages - installs packages
 
 services - starts and enables services
+
+configs - configurations files
+
+firewall - firewall configuration
+

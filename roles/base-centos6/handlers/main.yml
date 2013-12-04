@@ -1,3 +1,6 @@
 ---
 - name: restart ntpd
   service: name=ntpd state=restarted
+
+- name: reload firewall
+  service: name=iptables state=reloaded

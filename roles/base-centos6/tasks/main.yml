@@ -58,6 +58,7 @@
     - ntpd
   tags: [base, services]
 
-- name: dump out host_vars
-  template: src=test.j2 dest=/tmp/test.json
-  tags: [base, test]
+- name: update firewall configuration
+  template: src=iptables dest=/etc/sysconfig/iptables
+  tags: [base, configs, firewall]
+  notify: reload firewall

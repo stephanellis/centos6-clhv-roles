@@ -1,0 +1,22 @@
+---
+- hosts: centos6-server:!virtualmachine
+  roles:
+    - base-centos6
+  vars:
+    ssmtp: #see ssmtp.conf for details
+      mailhub: mx.google.com
+      RewriteDomain: example.com
+    ntp:
+      servers:
+        - 0.centos.pool.ntp.org
+        - 1.centos.pool.ntp.org
+        - 2.centos.pool.ntp.org
+- hosts: hypervisor
+  roles:
+    - hypervisor
+- hosts: glusterfs-server
+  roles:
+    - glusterfs-server
+- hosts: glusterfs-client
+  roles:
+    - glusterfs-client
