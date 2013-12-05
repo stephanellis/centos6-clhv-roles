@@ -62,3 +62,8 @@
   template: src=iptables dest=/etc/sysconfig/iptables
   tags: [base, configs, firewall]
   notify: reload firewall
+
+- name: sysctl settings
+  template: src=sysctl.conf dest=/etc/sysctl.conf
+  tags: [base, configs, sysctl]
+  notify: reload sysctl

@@ -1,0 +1,42 @@
+- name: install infiniband software and drivers
+  yum: name={{ item }} state=installed
+  with_items:
+    - libibcm
+    - libibverbs
+    - libibverbs-utils
+    - librdmacm
+    - librdmacm-utils
+    - rdma
+    - dapl
+    - ibacm
+    - ibsim
+    - ibutils
+    - libcxgb3
+    - libibmad
+    - libibumad
+    - libipathverbs
+    - libmlx4
+    - libmthca
+    - libnes
+    - rds-tools
+    - infiniband-diags
+    - mstflint
+    - opensm
+    - perftest
+    - qperf
+    - srptools
+  tags: [infiniband, packages]
+
+- name: infiniband rdma configs
+  copy: src={{ item }} dest=/etc/rdma/
+  with_items:
+    - rdma.conf
+    - partitions.conf
+  tags: [infiniband, configs]
+
+- name: start infiniband services
+  service: name={{ item }} state=started enabled=yes
+  with_items:
+    - rdma
+    - opensm
+  tags: [infiniband, services]

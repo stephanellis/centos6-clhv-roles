@@ -1,0 +1,27 @@
+##### infiniband-host role settings
+
+# Disable TCP Timestamps for better CPU util
+net.ipv4.tcp_timestamps = 0
+# Disabled TCP selective acks for better CPU util
+net.ipv4.tcp_sack = 0
+# increase maximum length of CPU input queues
+net.core.netdev_max_backlog = 250000
+
+# increase the TCP max and default buffer sizes
+net.core.rmem_max = 16777216
+net.core.wmem_max = 16777216
+net.core.rmem_default = 16777216
+net.core.wmem_default = 16777216
+net.core.optmem_max = 16777216
+
+# increase memory thresholds to prevent packet dropping
+net.ipv4.tcp_mem = 16777216 16777216 16777216
+
+# increase linux's auto-tuning tcp buffer limits
+net.ipv4.tcp_rmem = 4096 87380 16777216
+net.ipv4.tcp_wmem = 4096 65536 16777216
+
+# enable low latency mode for TCP
+net.ipv4.tcp_low_latency = 1
+
+#####

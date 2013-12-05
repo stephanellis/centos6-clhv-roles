@@ -7,3 +7,8 @@
   copy: src=glusterfs.key dest=/etc/pki/rpm-gpg/
   tags: [glusterfs, client, repos]
 
+- name: install glusterfs client packages
+  yum: name={{ item }} state=installed
+  with_items:
+    - glusterfs-fuse
+  tags: [glusterfs, client, packages]

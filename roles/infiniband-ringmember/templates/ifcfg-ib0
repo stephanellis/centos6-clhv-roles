@@ -1,0 +1,8 @@
+DEVICE=ib0
+ONBOOT=yes
+MASTER=bond10
+SLAVE=yes
+BOOTPROTO=static
+TYPE=InfiniBand
+CONNECTED_MODE=yes
+MTU=65520

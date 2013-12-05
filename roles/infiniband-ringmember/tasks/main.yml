@@ -1,0 +1,8 @@
+---
+- name: run interface templates
+  template: src={{ item }} dest=/etc/sysconfig/network-scripts
+  with_items:
+    - ifcfg-bond10
+    - ifcfg-ib0
+    - ifcfg-ib1
+  tags: [infiniband-ringmember, configs]

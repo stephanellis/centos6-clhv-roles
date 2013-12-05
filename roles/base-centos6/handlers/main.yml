@@ -4,3 +4,6 @@
 
 - name: reload firewall
   service: name=iptables state=reloaded
+
+- name: reload sysctl
+  command: sysctl -p
