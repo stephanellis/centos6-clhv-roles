@@ -7,3 +7,4 @@
 
 - name: reload sysctl
   command: sysctl -p
+  ignore_errors: True

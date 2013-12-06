@@ -1,8 +1,8 @@
 DEVICE=ib1
 ONBOOT=yes
-MASTER=bond10
-SLAVE=yes
-BOOTPROTO=static
+BOOTPROTO=none
 TYPE=InfiniBand
 CONNECTED_MODE=yes
 MTU=65520
+IPADDR={{ ib1_addr.split('/')[0] }}
+PREFIX={{ ib1_addr.split('/')[1] }}
