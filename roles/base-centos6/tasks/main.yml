@@ -38,6 +38,7 @@
     - ssmtp
     - lshw
     - ntp
+    - sipcalc
   tags: [base, packages]
 
 - name: ssmtp config
