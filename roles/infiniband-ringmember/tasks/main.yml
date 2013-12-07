@@ -19,3 +19,22 @@
   template: src=opensm dest=/etc/sysconfig/opensm
   tags: [infiniband-ringmember, configs]
   notify: restart opensm
+
+- name: install quagga
+  yum: name=quagga state=installed
+  tags: [infiniband-ringmember, packages]
+
+- name: quagga config for ospf
+  template: src={{ item }} dest=/etc/quagga/ owner=quagga group=quaggavt
+  with_items:
+    - zebra.conf
+    - ospfd.conf
+  tags: [infiniband-ringmember, configs]
+  notify: restart quagga
+
+- name: start and enabled quagga ospf
+  service: name={{ item }} state=started enabled=yes
+  with_items:
+    - zebra
+    - ospfd
+  tags: [infiniband-ringmember, services]

@@ -1,0 +1,4 @@
+
+# allow ospf (from the infiniband-ringmember role)
+-A INPUT -p 89 -j ACCEPT
+

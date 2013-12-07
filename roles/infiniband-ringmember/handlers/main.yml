@@ -1,3 +1,9 @@
 ---
 - name: restart opensm
   service: name=opensm state=restarted
+
+- name: restart quagga
+  service: name={{ item }} state=restarted
+  with_items:
+    - zebra
+    - ospfd
