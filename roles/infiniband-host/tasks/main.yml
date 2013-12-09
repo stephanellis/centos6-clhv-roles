@@ -38,5 +38,4 @@
   service: name={{ item }} state=started enabled=yes
   with_items:
     - rdma
-    - opensm
   tags: [infiniband, services]

@@ -15,10 +15,9 @@
 #  always_run: True
 #  tags: [infiniband-ringmember, configs]
 
-- name: run opensm sysconfig template
-  template: src=opensm dest=/etc/sysconfig/opensm
-  tags: [infiniband-ringmember, configs]
-  notify: restart opensm
+- name: start and enable opensm
+  service: name=opensm state=started enabled=yes
+  tags: [infiniband-ringmember, services]
 
 - name: install quagga
   yum: name=quagga state=installed

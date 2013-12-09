@@ -43,7 +43,7 @@
 {# use this if your using the register variable in the role
 #GUIDS="{{ ibports.stdout }}"
 #}
-GUIDS="0x{{ ansible_ib0['macaddress'].replace(':', '')[24:] }} 0x{{ ansible_ib1['macaddress'].replace(':', '')[24:] }}"
+#GUIDS="0x{{ ansible_ib0['macaddress'].replace(':', '')[24:] }} 0x{{ ansible_ib1['macaddress'].replace(':', '')[24:] }}"
 #
 # The obvious advantage to method #2 is that it's simple and doesn't
 # clutter up your file system, but it is far more limited in what you
@@ -72,4 +72,4 @@ GUIDS="0x{{ ansible_ib0['macaddress'].replace(':', '')[24:] }} 0x{{ ansible_ib1[
 # this setting will override the config files and render that particular
 # edit useless.
 #
-PRIORITY={{ ib_sm_prio }}
+#PRIORITY={{ ib_sm_prio }}
