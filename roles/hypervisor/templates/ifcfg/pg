@@ -1,0 +1,9 @@
+DEVICE=pg{{ item['name'] }}
+TYPE=Bridge
+ONBOOT=yes
+DELAY=0
+BOOTPROTO=none
+{% if item['name'] == 'BCN' %}
+IPADDR={{ bcn_addr }}
+NETMASK=255.255.255.0
+{% endif %}

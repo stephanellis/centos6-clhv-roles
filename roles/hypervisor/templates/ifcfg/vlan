@@ -1,0 +1,6 @@
+DEVICE={{ baseiface }}.{{ item['vlan'] }}
+TYPE=Ethernet
+VLAN=yes
+ONBOOT=yes
+BOOTPROTO=none
+BRIDGE=pg{{ item['name'] }}

@@ -11,18 +11,41 @@
         - 0.centos.pool.ntp.org
         - 1.centos.pool.ntp.org
         - 2.centos.pool.ntp.org
+
+
 - hosts: infiniband-host
   roles:
     - infiniband-host
+
+
 - hosts: infiniband-ringmember
   roles:
     - infiniband-ringmember
+
+
 - hosts: hypervisor
   roles:
     - hypervisor
+  vars:
+    vnetworks:
+      - {name: Border, vlan: 10}
+      - {name: Core, vlan: 11}
+      - {name: Service, vlan: 12}
+      - {name: Inf, vlan: 13}
+      - {name: Client, vlan: 14}
+      - {name: Guest, vlan: 15}
+      - {name: vWS, vlan: 16}
+      - {name: BMI, vlan: 20}
+      - {name: OOBM, vlan: 21}
+      - {name: Imaging, vlan: 33}
+
+
 - hosts: glusterfs-server
   roles:
     - glusterfs-server
+
+
 - hosts: glusterfs-client
   roles:
     - glusterfs-client
+

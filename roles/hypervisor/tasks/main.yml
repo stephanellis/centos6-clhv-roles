@@ -24,3 +24,29 @@
     - libvirtd
     - libvirt-guests
   tags: [hypervisor, services]
+
+- name: ensure ebtables is stopped and disabled
+  service: name=ebtables state=stopped enabled=no
+  tags: [hypervisor, services]
+
+- name: setup vnetworks port groups
+  template: src=ifcfg/pg dest=/etc/sysconfig/network-scripts/ifcfg-pg{{ item['name'] }}
+  with_items: vnetworks
+  tags: [hypervisor, configs, vnetworks]
+
+- name: setup vnetworks vlans
+  template: src=ifcfg/vlan dest=/etc/sysconfig/network-scripts/ifcfg-{{ baseiface }}.{{ item['vlan'] }}
+  with_items: vnetworks
+  tags: [hypervisor, configs, vnetworks]
+
+- name: start vnetworks port groups
+  shell: ifup pg{{ item['name'] }}
+  with_items: vnetworks
+  ignore_errors: yes
+  tags: [hypervisor, configs, vnetworks]
+
+- name: start vnetworks vlans
+  shell: ifup {{ baseiface }}.{{ item['vlan']}}
+  with_items: vnetworks
+  ignore_errors: yes
+  tags: [hypervisor, configs, vnetworks]
