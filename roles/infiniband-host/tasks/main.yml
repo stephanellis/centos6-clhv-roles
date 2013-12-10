@@ -39,3 +39,11 @@
   with_items:
     - rdma
   tags: [infiniband, services]
+
+- name: run interface templates
+  template: src={{ item }} dest=/etc/sysconfig/network-scripts
+  with_items:
+    - ifcfg-ib0
+    - ifcfg-ib1
+  tags: [infiniband-ringmember, configs]
+  notify: start infiniband interfaces

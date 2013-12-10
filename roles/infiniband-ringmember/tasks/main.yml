@@ -1,20 +1,4 @@
 ---
-- name: run interface templates
-  template: src={{ item }} dest=/etc/sysconfig/network-scripts
-  with_items:
-    - ifcfg-ib0
-    - ifcfg-ib1
-  tags: [infiniband-ringmember, configs]
-
-# this is a different technique for getting the port GUIDS
-# for the opensm template
-#- name: get ib port guids
-#  shell: ibstat -p | paste -sd " "
-#  register: ibports
-#  ignore_errors: True
-#  always_run: True
-#  tags: [infiniband-ringmember, configs]
-
 - name: start and enable opensm
   service: name=opensm state=started enabled=yes
   tags: [infiniband-ringmember, services]

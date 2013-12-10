@@ -1,0 +1,6 @@
+---
+- name: start infiniband interfaces
+  shell: ifup {{ item }}
+  with_items:
+    - ib0
+    - ib1
