@@ -1,1 +1,7 @@
 # hypervisor rules
+# allows traffic to flow from vms across
+# host vlan bridges
+
+{% for net in vnetworks %}
+-A FORWARD -i pg{{ net['name'] }} -j ACCEPT
+{% endfor %}

@@ -14,5 +14,5 @@
   tags: [glusterfs, client, packages]
 
 - name: tell selinux to allow fuse for virt
-  sebool: name=virt_use_fusefs persistent=yes state=yes
+  seboolean: name=virt_use_fusefs persistent=yes state=yes
   tags: [glusterfs, client, selinux]
