@@ -1,7 +1,11 @@
 ---
 - name: ansible dependencies
-  yum: name=libselinux-python state=installed
-  tags: [base, packages]
+  yum: name={{ item }} state=installed
+  with_items:
+    - libselinux-python
+    - libsemanage-python
+    - policycoreutils-python
+  tags: [base, packages, ansibledeps]
 
 - name: add epel repo
   action: copy src={{ item }} dest=/etc/yum.repos.d/

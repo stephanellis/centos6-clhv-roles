@@ -1,32 +1,21 @@
 ---
-- hosts: centos6-server:!virtualmachine
+- hosts: abmx-ffio
   roles:
     - base-centos6
+    - hypervisor
+    - infiniband-host
+    - infiniband-ringmember
+    - glusterfs-server
+    - glusterfs-client
   vars:
-    ssmtp: #see ssmtp.conf for details
-      mailhub: mx.google.com
-      RewriteDomain: example.com
     ntp:
       servers:
         - 0.centos.pool.ntp.org
         - 1.centos.pool.ntp.org
         - 2.centos.pool.ntp.org
-
-
-- hosts: infiniband-host
-  roles:
-    - infiniband-host
-
-
-- hosts: infiniband-ringmember
-  roles:
-    - infiniband-ringmember
-
-
-- hosts: hypervisor
-  roles:
-    - hypervisor
-  vars:
+    ssmtp: #see ssmtp.conf for details
+      mailhub: mx.google.com
+      RewriteDomain: example.com
     vnetworks:
       - {name: Border, vlan: 10}
       - {name: Core, vlan: 11}
@@ -38,14 +27,4 @@
       - {name: BMI, vlan: 20}
       - {name: OOBM, vlan: 21}
       - {name: Imaging, vlan: 33}
-
-
-- hosts: glusterfs-server
-  roles:
-    - glusterfs-server
-
-
-- hosts: glusterfs-client
-  roles:
-    - glusterfs-client
 
