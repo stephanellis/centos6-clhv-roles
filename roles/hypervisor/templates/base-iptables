@@ -2,6 +2,16 @@
 # allows traffic to flow from vms across
 # host vlan bridges
 
+#libvirt migration
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 49161 -j ACCEPT
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 49162 -j ACCEPT
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 49163 -j ACCEPT
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 49164 -j ACCEPT
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 49165 -j ACCEPT
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 49166 -j ACCEPT
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 49167 -j ACCEPT
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 49168 -j ACCEPT
+
 {% for net in vnetworks %}
 -A FORWARD -i pg{{ net['name'] }} -j ACCEPT
 {% endfor %}
