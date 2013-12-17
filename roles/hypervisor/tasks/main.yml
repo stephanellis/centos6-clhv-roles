@@ -18,6 +18,15 @@
     - python-virtinst
   tags: [hypervisor, packages]
 
+- name: copy libvirt configs
+  copy: src={{ item }} dest=/etc/libvirt/
+  with_items:
+    - libvirt.conf
+    - libvirtd.conf
+    - qemu.conf
+  tags: [hypervisor, configs]
+  notify: restart libvirtd
+
 - name: start and enable hypervisor services
   service: name={{ item }} state=started enabled=yes
   with_items:
