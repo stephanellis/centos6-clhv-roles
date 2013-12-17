@@ -43,6 +43,7 @@
     - lshw
     - ntp
     - sipcalc
+    - setroubleshoot
   tags: [base, packages]
 
 - name: ssmtp config
