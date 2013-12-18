@@ -7,6 +7,9 @@
   yum: name=quagga state=installed
   tags: [infiniband-ringmember, packages]
 
+- name: reload facts
+  setup:
+
 - name: quagga config for ospf
   template: src={{ item }} dest=/etc/quagga/ owner=quagga group=quaggavt
   with_items:
