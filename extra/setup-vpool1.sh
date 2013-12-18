@@ -1,5 +1,5 @@
 #! /bin/bash
-: '
+
 ansible abmx-ffio -a "mkfs.xfs -i size=512 /dev/gback/vpool1b1 -f"
 ansible abmx-ffio -a "mkfs.xfs -i size=512 /dev/gback/vpool1b2 -f"
 ansible abmx-ffio -a "mkdir -p /exports/vpool1b1"
@@ -10,7 +10,7 @@ ansible abmx-ffio -a "mount /exports/vpool1b1"
 ansible abmx-ffio -a "mount /exports/vpool1b2"
 ansible abmx-ffio -a "mkdir -p /exports/vpool1b1/b"
 ansible abmx-ffio -a "mkdir -p /exports/vpool1b2/b"
-'
+
 ansible hyper121 -a "gluster peer probe 172.16.17.122"
 ansible hyper121 -a "gluster peer probe 172.16.17.123"
 ansible hyper122 -a "gluster peer detach 172.16.16.10"
