@@ -24,7 +24,7 @@
     - libvirt.conf
     - libvirtd.conf
     - qemu.conf
-  tags: [hypervisor, configs]
+  tags: [hypervisor, configs, hypervisorconfigs]
   notify: restart libvirtd
 
 - name: start and enable hypervisor services
