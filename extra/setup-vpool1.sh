@@ -13,8 +13,14 @@ ansible abmx-ffio -a "mkdir -p /exports/vpool1b2/b"
 
 ansible hyper121 -a "gluster peer probe 172.16.17.122"
 ansible hyper121 -a "gluster peer probe 172.16.17.123"
+
+# fix the address for hyper121 in the trusted storage pool
+# side effect of the ring topology
+sleep 5
 ansible hyper122 -a "gluster peer detach 172.16.16.10"
 ansible hyper122 -a "gluster peer probe 172.16.17.121"
+
+sleep 5
 
 ansible hyper121 -a "gluster volume create vpool1 replica 2 transport tcp 172.16.17.121:/exports/vpool1b1/b 172.16.17.122:/exports/vpool1b2/b 172.16.17.122:/exports/vpool1b1/b 172.16.17.123:/exports/vpool1b2/b 172.16.17.123:/exports/vpool1b1/b 172.16.17.121:/exports/vpool1b2/b"
 
