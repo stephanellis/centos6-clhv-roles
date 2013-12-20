@@ -55,3 +55,9 @@
   with_items: vnetworks
   ignore_errors: yes
   tags: [hypervisor, configs, vnetworks]
+
+- name: convenience scripts for /root/bin
+  copy: src={{ item }} dest=/root/bin/ mode=0700
+  with_items:
+    - mig
+  tags: [hypervisor, scripts]

@@ -1,0 +1,4 @@
+#!/bin/bash
+
+virsh migrate --live --persistent --undefinesource --verbose $1 qemu+ssh://$2/system
+
