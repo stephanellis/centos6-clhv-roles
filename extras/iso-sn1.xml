@@ -1,0 +1,17 @@
+<pool type='netfs'>
+  <name>iso-sn1</name>
+  <source>
+    <host name='10.79.20.2'/>
+    <dir path='/exports/iso'/>
+    <format type='nfs'/>
+  </source>
+  <target>
+    <path>/var/lib/libvirt/images/iso-sn1</path>
+    <permissions>
+      <mode>0755</mode>
+      <owner>0</owner>
+      <group>0</group>
+    </permissions>
+  </target>
+</pool>
+

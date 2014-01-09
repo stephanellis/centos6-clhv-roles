@@ -49,3 +49,10 @@ ansible abmx-ffio -a "mkdir /var/lib/libvirt/images/vpool1"
 ansible abmx-ffio -a "virsh pool-start vpool1"
 ansible abmx-ffio -a "virsh pool-autostart vpool1"
 
+ansible abmx-ffio -m copy -a "src=extras/iso-sn1.xml dest=/tmp/"
+ansible abmx-ffio -a "virsh pool-define /tmp/iso-sn1.xml"
+
+ansible abmx-ffio -a "mkdir /var/lib/libvirt/images/iso-sn1"
+ansible abmx-ffio -a "virsh pool-start iso-sn1"
+ansible abmx-ffio -a "virsh pool-autostart iso-sn1"
+
