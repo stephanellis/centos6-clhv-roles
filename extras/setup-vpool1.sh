@@ -37,6 +37,7 @@ ansible hyper121 -a "gluster volume set vpool1 cluster.eager-lock enable"
 ansible hyper121 -a "gluster volume set vpool1 network.remote-dio on"
 ansible hyper121 -a "gluster volume set vpool1 storage.owner-uid 107"
 ansible hyper121 -a "gluster volume set vpool1 storage.owner-gid 107"
+ansible hyper121 -a "gluster volume set vpool1 nfs.disable on"
 ansible hyper121 -a "gluster volume start vpool1"
 
 sleep 10
