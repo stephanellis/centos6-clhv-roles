@@ -2,6 +2,9 @@
 - name: restart ntpd
   service: name=ntpd state=restarted
 
+- name: compose iptables
+  shell: cat /opt/rolefrags/iptables/* > /opt/rolefrags/iptables.compose
+
 - name: reload firewall
   service: name=iptables state=reloaded
 

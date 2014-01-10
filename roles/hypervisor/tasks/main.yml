@@ -18,6 +18,8 @@
     - python-virtinst
   tags: [hypervisor, packages]
 
+- include: iptables.yml
+
 - name: tell selinux to allow nfs for virt
   seboolean: name=virt_use_nfs persistent=yes state=yes
   tags: [glusterfs, client, selinux]

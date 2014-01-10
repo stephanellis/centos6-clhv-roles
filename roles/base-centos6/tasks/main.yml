@@ -7,6 +7,8 @@
     - policycoreutils-python
   tags: [base, packages, ansibledeps]
 
+- include: iptables.yml
+
 - name: add epel repo
   action: copy src={{ item }} dest=/etc/yum.repos.d/
   with_items:
