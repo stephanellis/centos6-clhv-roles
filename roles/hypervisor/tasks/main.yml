@@ -18,6 +18,10 @@
     - python-virtinst
   tags: [hypervisor, packages]
 
+- name: tell selinux to allow nfs for virt
+  seboolean: name=virt_use_nfs persistent=yes state=yes
+  tags: [glusterfs, client, selinux]
+
 - name: copy libvirt configs
   copy: src={{ item }} dest=/etc/libvirt/
   with_items:
