@@ -1,7 +1,7 @@
-playbooks
-=========
+CentOS 6 Roles
+==============
 
-Ansible roles and playbooks for CentOS. The main goal is to
+Ansible roles for CentOS (maybe RHEL) 6. The main goal is to
 provide best practices configuration for clusters of hypervisors
 on CentOS using GlusterFS for shared/nothing storage. It also
 includes roles that configure infiniband hardware for use as
@@ -12,6 +12,20 @@ playbook I use on my lab environment.
 
 hosts-lab.ini is the actual inventory file I use for this lab
 playbook.
+
+Roles
+-----
+base-centos6 - installs admin tools that I use on most installations  
+hypervisor - installs and configures libvirt and kvm  
+clusternode - installs High Availability group and configures a basic cluster to manage highly available kvm quests  
+glusterfs-server - installs and configures server components for glusterfs  
+glusterfs-client - installs and configures client components of glusterfs  
+infiniband-host - installs and configures infiniband host components, optimized for IPoIB
+infiniband-ringmember - assembles an IPoIB network in a ring topology using OSPF to manage routes.  Also sets up loopback addresses for use as endpoint addresses for gluster bricks, etc..  
+
+### extras directory
+includes scripts and snippets for setting up my lab directory, specifically the gluster bricks and volumes, as well as the storage pools for the hypervisors in my lab
+
 
 Notes
 -----
