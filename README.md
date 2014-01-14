@@ -36,6 +36,8 @@ packages - installs packages
 services - starts and enables services  
 configs - configurations files  
 firewall - firewall configuration  
+iptables - IPv4 firewall stuff
+ip6tables - IPv6 firewall stuff ( not implemented yet :( )  
 directories - creates directories for various  
 
 ### GlusterFS Volume Options for VMs

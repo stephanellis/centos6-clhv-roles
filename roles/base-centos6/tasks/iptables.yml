@@ -1,10 +1,10 @@
 ---
 - name: make sure iptables role frags dir exists
   file: dest=/opt/rolefrags/iptables state=directory
-  tags: [rolefrags, iptables]
+  tags: [rolefrags, firewall, iptables]
 
 - name: run iptables role frags templates
   template: src={{ item }} dest=/opt/rolefrags/iptables/
   with_fileglob: rolefrags-iptables/*
-  tags: [rolefrages, iptables]
+  tags: [rolefrages, firewall, iptables]
   notify: compose iptables
