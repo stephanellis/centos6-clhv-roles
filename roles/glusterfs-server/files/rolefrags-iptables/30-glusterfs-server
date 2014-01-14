@@ -1,0 +1,18 @@
+
+
+###### glusterfs-server rules
+# glusterd
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 24007 -j ACCEPT
+# management
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 24008 -j ACCEPT
+# Brick Ports - this roles supports up to 8 bricks per server
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 49152 -j ACCEPT
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 49153 -j ACCEPT
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 49154 -j ACCEPT
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 49155 -j ACCEPT
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 49156 -j ACCEPT
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 49157 -j ACCEPT
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 49158 -j ACCEPT
+-A INPUT -m state --state NEW -m tcp -p tcp --dport 49159 -j ACCEPT
+##### end of glusterfs-server rules
+

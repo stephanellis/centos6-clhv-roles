@@ -19,6 +19,8 @@
   tags: [glusterfs, server, configs, volfile]
   notify: restart glusterd
 
+- include: iptables.yml
+
 - name: services
   service: name=glusterd state=started enabled=yes
   tags: [glusterfs, server, services]
