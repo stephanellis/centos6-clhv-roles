@@ -1,0 +1,4 @@
+---
+- name: run hosts file template
+  template: src=hosts dest=/etc/
+  tags: [clusternode, hostsfile]

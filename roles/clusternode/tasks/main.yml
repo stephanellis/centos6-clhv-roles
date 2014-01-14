@@ -1,0 +1,3 @@
+---
+- include: sshsetup.yml
+- include: hostsfile.yml

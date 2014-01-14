@@ -7,6 +7,7 @@
     - infiniband-ringmember
     - glusterfs-server
     - glusterfs-client
+    - {role: clusternode, cluster_group: labcluster}
   vars:
     ntp: #see ntp.conf in the base-centos6 role for details
       servers:

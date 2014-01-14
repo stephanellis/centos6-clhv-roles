@@ -1,0 +1,20 @@
+---
+- name: generate ssh config to auto accept known hosts for cluster memebers
+  template: src=ssh_config dest=/etc/ssh/
+  tags: [clusternode, sshsetup]
+
+- name: generate ssh keys for root on nodes
+  shell: ssh-keygen -t rsa -f ~/.ssh/id_rsa -N '' -q creates=~/.ssh/id_rsa.pub
+  tags: [clusternode, sshsetup]
+
+- name: get pubkey from each host
+  shell: cat ~/.ssh/id_rsa.pub
+  register: user_pubkey
+  ignore_errors: True
+  changed_when: False
+  tags: [clusternode, sshsetup]
+
+- name: add hosts pubkeys to authorized_keys
+  authorized_key: user={{ hostvars[item]['ansible_ssh_user'] }} key="{{ hostvars[item]['user_pubkey']['stdout_lines'][0] }}"
+  with_items: groups[cluster_group]
+  tags: [clusternode, sshsetup]

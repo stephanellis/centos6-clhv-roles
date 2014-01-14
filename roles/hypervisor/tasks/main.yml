@@ -54,12 +54,14 @@
   shell: ifup pg{{ item['name'] }}
   with_items: vnetworks
   ignore_errors: yes
+  changed_when: False
   tags: [hypervisor, configs, vnetworks]
 
 - name: start vnetworks vlans
   shell: ifup {{ baseiface }}.{{ item['vlan']}}
   with_items: vnetworks
   ignore_errors: yes
+  changed_when: False
   tags: [hypervisor, configs, vnetworks]
 
 - name: convenience scripts for /root/bin
