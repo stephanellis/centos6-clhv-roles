@@ -66,11 +66,6 @@
     - ntpd
   tags: [base, services]
 
-- name: sysctl settings
-  template: src=sysctl.conf dest=/etc/sysctl.conf
-  tags: [base, configs, sysctl]
-  notify: reload sysctl
-
 - name: create root user bin directory
   file: name=/root/bin state=directory
   tags: [base, directories]

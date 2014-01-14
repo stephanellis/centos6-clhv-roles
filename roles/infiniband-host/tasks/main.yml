@@ -1,3 +1,21 @@
+---
+- name: sysctl tuning for infiniband
+  sysctl: name={{ item.name }} value="{{ item.value }}"
+  with_items:
+    - {name: "net.ipv4.tcp_timestamps", value: 0}
+    - {name: "net.ipv4.tcp_sack", value: 0}
+    - {name: "net.core.netdev_max_backlog", value: 250000}
+    - {name: "net.core.rmem_max", value: 16777216}
+    - {name: "net.core.wmem_max", value: 16777216}
+    - {name: "net.core.rmem_default", value: 16777216}
+    - {name: "net.core.wmem_default", value: 16777216}
+    - {name: "net.core.optmem_max", value: 16777216}
+    - {name: "net.ipv4.tcp_mem", value: 16777216 16777216 16777216}
+    - {name: "net.ipv4.tcp_rmem", value: 4096 87380 16777216}
+    - {name: "net.ipv4.tcp_wmem", value: 4096 87380 16777216}
+    - {name: "net.ipv4.tcp_low_latency", value: 1}
+  tags: [sysctl]
+
 - name: install infiniband software and drivers
   yum: name={{ item }} state=installed
   with_items:
