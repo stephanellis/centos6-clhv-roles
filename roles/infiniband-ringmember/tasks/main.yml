@@ -18,6 +18,8 @@
   tags: [infiniband-ringmember, configs]
   notify: restart quagga
 
+- include: iptables.yml
+
 - name: start and enabled quagga ospf
   service: name={{ item }} state=started enabled=yes
   with_items:
