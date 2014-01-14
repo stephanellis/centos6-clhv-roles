@@ -3,7 +3,8 @@
   service: name=ntpd state=restarted
 
 - name: compose iptables
-  shell: cat /opt/rolefrags/iptables/* > /opt/rolefrags/iptables.compose
+  shell: cat /opt/rolefrags/iptables/* > /etc/sysconfig/iptables
+  notify: reload firewall
 
 - name: reload firewall
   service: name=iptables state=reloaded

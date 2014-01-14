@@ -66,11 +66,6 @@
     - ntpd
   tags: [base, services]
 
-- name: update firewall configuration
-  template: src=iptables dest=/etc/sysconfig/iptables
-  tags: [base, configs, firewall]
-  notify: reload firewall
-
 - name: sysctl settings
   template: src=sysctl.conf dest=/etc/sysctl.conf
   tags: [base, configs, sysctl]
