@@ -1,5 +1,5 @@
 ---
-- hosts: abmx-ffio
+- hosts: labcluster
   roles:
     - base-centos6
     - hypervisor
