@@ -8,12 +8,12 @@
     - glusterfs-server
     - glusterfs-client
   vars:
-    ntp:
+    ntp: #see ntp.conf in the base-centos6 role for details
       servers:
         - 0.centos.pool.ntp.org
         - 1.centos.pool.ntp.org
         - 2.centos.pool.ntp.org
-    ssmtp: #see ssmtp.conf for details
+    ssmtp: #see ssmtp.conf in the base-centos6 role for details
       mailhub: mx.google.com
       RewriteDomain: example.com
     vnetworks:
