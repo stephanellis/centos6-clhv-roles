@@ -13,11 +13,12 @@
 
 - name: set ricci password
   user: name=ricci update_password=always password={{ ricci_password }}
+  tags: [clusternode, ricci_password]
 
 - name: cluster config
-  template: src=cluster.conf dest={{ root_prefix }}/etc/cluster/cluster.conf
+  template: src=cluster.conf dest=/etc/cluster/cluster.conf
   register: clusterconf
-  tags: clusterconfig
+  tags: [clusternode, configs, clusterconfig]
 
 #- name: start and enable ricci service
 #  service: name={{ item }} state=started enabled=yes
@@ -26,5 +27,5 @@
 #    - modclusterd
 #    - cman
 #    - rgmanager
-#  tags: clusterservices
+#  tags: [clusternode, services]
 
