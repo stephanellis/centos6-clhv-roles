@@ -3,4 +3,9 @@
 
 {% for h in groups[cluster_group] %}
 {{ hostvars[h]['ansible_ssh_host'] }} {{ h }}
+{% if hostvars[h]['bcn_iface'] is defined and hostvars[h]['ansible_' + hostvars[h]['bcn_iface']]['ipv4']['address'] is defined %}
+{{ hostvars[h]['ansible_' + hostvars[h]['bcn_iface']]['ipv4']['address'] }} {{ h }}.bcn
+{% else %}
+{{ hostvars[h]['ansible_ssh_host'] }} {{ h }}.bcn
+{% endif %}
 {% endfor %}

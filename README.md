@@ -53,3 +53,11 @@ gluster volume set vpool1 cluster.eager-lock enable
 gluster volume set vpool1 network.remote-dio on  
 gluster volume set vpool1 storage.owner-uid 107  
 gluster volume set vpool1 storage.owner-gid 107  
+
+### clusternode role
+takes parameters thusly:
+- {role: clusternode, cluster_group: clusternodes, apcpdu_group: apcspuds}
+
+if apcpdu_group is passed in, cluster.conf will be setup with fence_apc_snmp  
+if ipmi_ip is available as a hostvar, an ipmi fence device and method will be defined in the cluster.conf for the host  
+

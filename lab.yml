@@ -7,7 +7,7 @@
     - infiniband-ringmember
     - glusterfs-server
     - glusterfs-client
-    - {role: clusternode, cluster_group: labcluster}
+    - {role: clusternode, cluster_group: labcluster, apcpdu_group: apcpdus}
   vars:
     ntp: #see ntp.conf in the base-centos6 role for details
       servers:
@@ -18,8 +18,6 @@
       mailhub: mx.google.com
       RewriteDomain: example.com
     ccs_config_version: 1
-    pdus:
-      - {name: labpdu, ip: 10.79.21.13}
     vnetworks:
       - {name: Border, vlan: 10}
       - {name: Core, vlan: 11}

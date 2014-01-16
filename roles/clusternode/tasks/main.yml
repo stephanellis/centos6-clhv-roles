@@ -1,4 +1,6 @@
 ---
+- include: iptables.yml
+- meta: flush_handlers
 - include: sshsetup.yml
 - include: hostsfile.yml
 
@@ -20,12 +22,12 @@
   register: clusterconf
   tags: [clusternode, configs, clusterconfig]
 
-#- name: start and enable ricci service
-#  service: name={{ item }} state=started enabled=yes
-#  with_items:
-#    - ricci
-#    - modclusterd
-#    - cman
-#    - rgmanager
-#  tags: [clusternode, services]
+- name: start and enable ricci service
+  service: name={{ item }} state=started enabled=yes
+  with_items:
+    - ricci
+    - modclusterd
+    - cman
+    - rgmanager
+  tags: [clusternode, services]
 
