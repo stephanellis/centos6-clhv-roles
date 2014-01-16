@@ -1,15 +1,15 @@
 #! /bin/bash
 
-ansible abmx-ffio -a "mkfs.xfs -i size=512 /dev/gback/vpool1b1 -f"
-ansible abmx-ffio -a "mkfs.xfs -i size=512 /dev/gback/vpool1b2 -f"
-ansible abmx-ffio -a "mkdir -p /exports/vpool1b1"
-ansible abmx-ffio -a "mkdir -p /exports/vpool1b2"
-ansible abmx-ffio -m shell -a "echo /dev/gback/vpool1b1 /exports/vpool1b1 xfs rw,noatime,nodiratime 0 0 >> /etc/fstab"
-ansible abmx-ffio -m shell -a "echo /dev/gback/vpool1b2 /exports/vpool1b2 xfs rw,noatime,nodiratime 0 0 >> /etc/fstab"
-ansible abmx-ffio -a "mount /exports/vpool1b1"
-ansible abmx-ffio -a "mount /exports/vpool1b2"
-ansible abmx-ffio -a "mkdir -p /exports/vpool1b1/b"
-ansible abmx-ffio -a "mkdir -p /exports/vpool1b2/b"
+ansible labcluster -a "mkfs.xfs -i size=512 /dev/gback/vpool1b1 -f"
+ansible labcluster -a "mkfs.xfs -i size=512 /dev/gback/vpool1b2 -f"
+ansible labcluster -a "mkdir -p /exports/vpool1b1"
+ansible labcluster -a "mkdir -p /exports/vpool1b2"
+ansible labcluster -m shell -a "echo /dev/gback/vpool1b1 /exports/vpool1b1 xfs rw,noatime,nodiratime 0 0 >> /etc/fstab"
+ansible labcluster -m shell -a "echo /dev/gback/vpool1b2 /exports/vpool1b2 xfs rw,noatime,nodiratime 0 0 >> /etc/fstab"
+ansible labcluster -a "mount /exports/vpool1b1"
+ansible labcluster -a "mount /exports/vpool1b2"
+ansible labcluster -a "mkdir -p /exports/vpool1b1/b"
+ansible labcluster -a "mkdir -p /exports/vpool1b2/b"
 
 ansible hyper121 -a "gluster peer probe 172.16.17.122"
 sleep 5
@@ -42,17 +42,17 @@ ansible hyper121 -a "gluster volume start vpool1"
 
 sleep 10
 
-ansible abmx-ffio -m copy -a "src=extras/vpool1.xml dest=/tmp/"
-ansible abmx-ffio -a "virsh pool-define /tmp/vpool1.xml"
+ansible labcluster -m copy -a "src=extras/vpool1.xml dest=/tmp/"
+ansible labcluster -a "virsh pool-define /tmp/vpool1.xml"
 
-ansible abmx-ffio -a "mkdir /var/lib/libvirt/images/vpool1"
-ansible abmx-ffio -a "virsh pool-start vpool1"
-ansible abmx-ffio -a "virsh pool-autostart vpool1"
+ansible labcluster -a "mkdir /var/lib/libvirt/images/vpool1"
+ansible labcluster -a "virsh pool-start vpool1"
+ansible labcluster -a "virsh pool-autostart vpool1"
 
-ansible abmx-ffio -m copy -a "src=extras/iso-sn1.xml dest=/tmp/"
-ansible abmx-ffio -a "virsh pool-define /tmp/iso-sn1.xml"
+ansible labcluster -m copy -a "src=extras/iso-sn1.xml dest=/tmp/"
+ansible labcluster -a "virsh pool-define /tmp/iso-sn1.xml"
 
-ansible abmx-ffio -a "mkdir /var/lib/libvirt/images/iso-sn1"
-ansible abmx-ffio -a "virsh pool-start iso-sn1"
-ansible abmx-ffio -a "virsh pool-autostart iso-sn1"
+ansible labcluster -a "mkdir /var/lib/libvirt/images/iso-sn1"
+ansible labcluster -a "virsh pool-start iso-sn1"
+ansible labcluster -a "virsh pool-autostart iso-sn1"
 
