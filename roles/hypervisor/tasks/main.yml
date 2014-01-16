@@ -34,11 +34,20 @@
   notify: restart libvirtd
 
 - name: start and enable hypervisor services
-  service: name={{ item }} state=started enabled=yes
+  service: name={{ item }} state=started
   with_items:
     - libvirtd
     - libvirt-guests
   tags: [hypervisor, services]
+  when: cluster_name is not defined
+
+- name: start and enable hypervisor services
+  service: name={{ item }} enabled=yes
+  with_items:
+    - libvirtd
+    - libvirt-guests
+  tags: [hypervisor, services]
+  when: cluster_name is not defined
 
 - name: setup vnetworks port groups
   template: src=ifcfg/pg dest=/etc/sysconfig/network-scripts/ifcfg-pg{{ item['name'] }}

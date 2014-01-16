@@ -4,6 +4,13 @@
 - include: sshsetup.yml
 - include: hostsfile.yml
 
+- name: ensure hypervisor services are disabled
+  service: name={{ item }} enabled=no
+  with_items:
+    - libvirtd
+    - libvirt-guests
+  tags: [hypervisor, services]
+
 - name: install cluster packages
   yum: name={{ item }} state=installed
   with_items:
