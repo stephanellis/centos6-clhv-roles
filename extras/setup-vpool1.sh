@@ -11,34 +11,24 @@ ansible labcluster -a "mount /exports/vpool1b2"
 ansible labcluster -a "mkdir -p /exports/vpool1b1/b"
 ansible labcluster -a "mkdir -p /exports/vpool1b2/b"
 
-ansible hyper121 -a "gluster peer probe 172.16.17.122"
+ansible hyper121 -a "gluster --remote-host=172.16.17.121  peer probe 172.16.17.122"
 sleep 5
-ansible hyper121 -a "gluster peer probe 172.16.17.123"
-sleep 5
-# fix the address for hyper121 in the trusted storage pool
-# side effect of the ring topology
-sleep 5
-
-ansible hyper122 -a "gluster peer detach 172.16.16.10"
-sleep 5
-
-ansible hyper122 -a "gluster peer probe 172.16.17.121"
-
+ansible hyper121 -a "gluster --remote-host=172.16.17.121  peer probe 172.16.17.123"
 sleep 10
 
-ansible hyper121 -a "gluster volume create vpool1 replica 2 transport tcp 172.16.17.121:/exports/vpool1b1/b 172.16.17.122:/exports/vpool1b2/b 172.16.17.122:/exports/vpool1b1/b 172.16.17.123:/exports/vpool1b2/b 172.16.17.123:/exports/vpool1b1/b 172.16.17.121:/exports/vpool1b2/b"
+ansible hyper121 -a "gluster --remote-host=172.16.17.121  volume create vpool1 replica 2 transport tcp 172.16.17.121:/exports/vpool1b1/b 172.16.17.122:/exports/vpool1b2/b 172.16.17.122:/exports/vpool1b1/b 172.16.17.123:/exports/vpool1b2/b 172.16.17.123:/exports/vpool1b1/b 172.16.17.121:/exports/vpool1b2/b"
 
-ansible hyper121 -a "gluster volume set vpool1 server.allow-insecure on"
-ansible hyper121 -a "gluster volume set vpool1 performance.quick-read off"
-ansible hyper121 -a "gluster volume set vpool1 performance.read-ahead off"
-ansible hyper121 -a "gluster volume set vpool1 performance.io-cache off"
-ansible hyper121 -a "gluster volume set vpool1 performance.stat-prefetch off"
-ansible hyper121 -a "gluster volume set vpool1 cluster.eager-lock enable"
-ansible hyper121 -a "gluster volume set vpool1 network.remote-dio on"
-ansible hyper121 -a "gluster volume set vpool1 storage.owner-uid 107"
-ansible hyper121 -a "gluster volume set vpool1 storage.owner-gid 107"
-ansible hyper121 -a "gluster volume set vpool1 nfs.disable on"
-ansible hyper121 -a "gluster volume start vpool1"
+ansible hyper121 -a "gluster --remote-host=172.16.17.121  volume set vpool1 server.allow-insecure on"
+ansible hyper121 -a "gluster --remote-host=172.16.17.121  volume set vpool1 performance.quick-read off"
+ansible hyper121 -a "gluster --remote-host=172.16.17.121  volume set vpool1 performance.read-ahead off"
+ansible hyper121 -a "gluster --remote-host=172.16.17.121  volume set vpool1 performance.io-cache off"
+ansible hyper121 -a "gluster --remote-host=172.16.17.121  volume set vpool1 performance.stat-prefetch off"
+ansible hyper121 -a "gluster --remote-host=172.16.17.121  volume set vpool1 cluster.eager-lock enable"
+ansible hyper121 -a "gluster --remote-host=172.16.17.121  volume set vpool1 network.remote-dio on"
+ansible hyper121 -a "gluster --remote-host=172.16.17.121  volume set vpool1 storage.owner-uid 107"
+ansible hyper121 -a "gluster --remote-host=172.16.17.121  volume set vpool1 storage.owner-gid 107"
+ansible hyper121 -a "gluster --remote-host=172.16.17.121  volume set vpool1 nfs.disable on"
+ansible hyper121 -a "gluster --remote-host=172.16.17.121  volume start vpool1"
 
 sleep 10
 
