@@ -24,7 +24,7 @@ infiniband-host - installs and configures infiniband host components, optimized 
 infiniband-ringmember - assembles an IPoIB network in a ring topology using OSPF to manage routes.  Also sets up loopback addresses for use as endpoint addresses for gluster bricks, etc..  
 
 ### extras directory
-includes scripts and snippets for setting up my lab directory, specifically the gluster bricks and volumes, as well as the storage pools for the hypervisors in my lab
+includes scripts and snippets for setting up my lab environment, specifically the gluster bricks and volumes, as well as the storage pools for the hypervisors in my lab
 
 
 Notes
@@ -36,8 +36,8 @@ packages - installs packages
 services - starts and enables services  
 configs - configurations files  
 firewall - firewall configuration  
-iptables - IPv4 firewall stuff
-ip6tables - IPv6 firewall stuff ( not implemented yet :( )  
+iptables - IPv4 firewall stuff  
+ip6tables - IPv6 firewall stuff, not implemented yet :(  
 directories - creates directories for various  
 
 ### GlusterFS Volume Options for VMs
