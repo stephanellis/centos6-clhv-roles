@@ -39,6 +39,7 @@ firewall - firewall configuration
 iptables - IPv4 firewall stuff  
 ip6tables - IPv6 firewall stuff, not implemented yet :(  
 directories - creates directories for various  
+clusterconfig - after updating the playbook cluster parameters, use this
 
 ### GlusterFS Volume Options for VMs
 After you create a gluster volume and before you start it, these options should be set
