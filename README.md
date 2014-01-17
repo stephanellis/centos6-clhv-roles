@@ -20,7 +20,7 @@ hypervisor - installs and configures libvirt and kvm
 clusternode - installs High Availability group and configures a basic cluster to manage highly available kvm quests  
 glusterfs-server - installs and configures server components for glusterfs  
 glusterfs-client - installs and configures client components of glusterfs  
-infiniband-host - installs and configures infiniband host components, optimized for IPoIB
+infiniband-host - installs and configures infiniband host components, optimized for IPoIB  
 infiniband-ringmember - assembles an IPoIB network in a ring topology using OSPF to manage routes.  Also sets up loopback addresses for use as endpoint addresses for gluster bricks, etc..  
 
 ### extras directory
