@@ -17,7 +17,6 @@
     ssmtp: #see ssmtp.conf in the base-centos6 role for details
       mailhub: mx.google.com
       RewriteDomain: example.com
-    ccs_config_version: 1
     vnetworks:
       - {name: Border, vlan: 10}
       - {name: Core, vlan: 11}
@@ -29,5 +28,9 @@
       - {name: BMI, vlan: 20}
       - {name: OOBM, vlan: 21}
       - {name: Imaging, vlan: 33}
-    vmfds: []
+    ccs_config_version: 19
+    vmfds:
+      - {name: hyper121p, nodes:[hyper121, hyper122, hyper123]}
+      - {name: hyper122p, nodes:[hyper122, hyper123, hyper121]}
+      - {name: hyper123p, nodes:[hyper123, hyper121, hyper122]}
     vms: []

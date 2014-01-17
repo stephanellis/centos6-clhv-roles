@@ -36,5 +36,16 @@
     - modclusterd
     - cman
     - rgmanager
-  tags: [clusternode, services]
+  register: start_cluster_services
+  tags: [clusternode, services, clusterconfig]
 
+- name: dummy task to conditionally trigger reload cluster handler
+  shell: /bin/true
+  when: clusterconf|changed and not start_cluster_services|changed
+  notify: reload cluster config
+  tags: clusterconfig
+
+- name: test
+  shell: /bin/true
+  when: master_node == node_id
+  tags: clustertest
