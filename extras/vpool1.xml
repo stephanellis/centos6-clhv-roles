@@ -1,7 +1,7 @@
 <pool type='netfs'>
   <name>vpool1</name>
   <source>
-    <host name='localhost'/>
+    <host name='172.16.17.121'/>
     <dir path='/vpool1'/>
     <format type='glusterfs'/>
   </source>

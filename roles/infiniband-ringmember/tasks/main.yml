@@ -5,6 +5,10 @@
     - {name: "net.ipv4.ip_forward", value: 1}
   tags: [sysctl]
 
+- name: copy bashrc for root with gluster alias
+  template: src=bashrc dest=/root/.bashrc
+  tags: [infiniband-ringmember, bashrc]
+
 - name: start and enable opensm
   service: name=opensm state=started enabled=yes
   tags: [infiniband-ringmember, services]
