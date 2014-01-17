@@ -1,5 +1,5 @@
 ---
 - name: reload cluster config
   shell: cman_tool version -r -S
-  when: master_node == node_id
+  when: master_node|int == node_id|int
 

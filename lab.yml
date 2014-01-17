@@ -28,7 +28,7 @@
       - {name: BMI, vlan: 20}
       - {name: OOBM, vlan: 21}
       - {name: Imaging, vlan: 33}
-    ccs_config_version: 19
+    ccs_config_version: 1
     vmfds:
       - {name: hyper121p, nodes:[hyper121, hyper122, hyper123]}
       - {name: hyper122p, nodes:[hyper122, hyper123, hyper121]}

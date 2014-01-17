@@ -45,7 +45,3 @@
   notify: reload cluster config
   tags: clusterconfig
 
-- name: test
-  shell: /bin/true
-  when: master_node == node_id
-  tags: clustertest
