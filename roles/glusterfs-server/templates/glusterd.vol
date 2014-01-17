@@ -7,4 +7,8 @@ volume management
     option transport.socket.read-fail-log off
     option rpc-auth-allow-insecure on
     option base-port 50151
+{% if lo_addr is defined %}
+    # Bind to the lo_addr when server has infiniband ringmember role
+    option transport.socket.bind-address {{ lo_addr.split('/')[0] }}
+{% endif %}
 end-volume

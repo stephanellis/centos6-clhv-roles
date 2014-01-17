@@ -15,7 +15,7 @@
   tags: [glusterfs, server, packages]
 
 - name: update glusterd.vol to accommodate libgfapi qemu-kvm
-  copy: src=glusterd.vol dest=/etc/glusterfs/
+  template: src=glusterd.vol dest=/etc/glusterfs/
   tags: [glusterfs, server, configs, volfile]
   notify: restart glusterd
 
