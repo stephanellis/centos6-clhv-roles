@@ -1,0 +1,7 @@
+
+
+*nat
+# redirect localhost:24007 to the ringmember lo_addr so shd and nfsd work
+-I OUTPUT -p tcp -d 127.0.0.0/8 --dport 24007 -j DNAT --to-destination {{ lo_addr.split('/')[0] }}:24007
+COMMIT
+

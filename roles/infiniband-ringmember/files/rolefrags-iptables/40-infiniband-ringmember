@@ -6,4 +6,5 @@
 # allow ring traffic to flow thru
 -A FORWARD -i ib0 -j ACCEPT
 -A FORWARD -i ib1 -j ACCEPT
+-A FORWARD -i lo -j ACCEPT
 

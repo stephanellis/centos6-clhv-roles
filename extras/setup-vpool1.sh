@@ -27,7 +27,6 @@ ansible hyper121 -a "gluster --remote-host=172.16.17.121  volume set vpool1 clus
 ansible hyper121 -a "gluster --remote-host=172.16.17.121  volume set vpool1 network.remote-dio on"
 ansible hyper121 -a "gluster --remote-host=172.16.17.121  volume set vpool1 storage.owner-uid 107"
 ansible hyper121 -a "gluster --remote-host=172.16.17.121  volume set vpool1 storage.owner-gid 107"
-ansible hyper121 -a "gluster --remote-host=172.16.17.121  volume set vpool1 nfs.disable on"
 ansible hyper121 -a "gluster --remote-host=172.16.17.121  volume start vpool1"
 
 sleep 10
@@ -41,10 +40,4 @@ ansible labcluster -a "virsh pool-autostart vpool1"
 
 ansible labcluster -m copy -a "src=extras/iso-sn1.xml dest=/tmp/"
 ansible labcluster -a "virsh pool-define /tmp/iso-sn1.xml"
-
-ansible labcluster -a "mkdir /var/lib/libvirt/images/iso-sn1"
-ansible labcluster -a "virsh pool-autostart iso-sn1"
-
-
-# reboot the servers after running this script
 
