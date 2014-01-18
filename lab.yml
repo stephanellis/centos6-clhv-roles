@@ -28,9 +28,13 @@
       - {name: BMI, vlan: 20}
       - {name: OOBM, vlan: 21}
       - {name: Imaging, vlan: 33}
-    ccs_config_version: 1
+    ccs_config_version: 4
+    rm_log_level: 7
+    vmdefpath: /var/lib/libvirt/images/vpool1/def
     vmfds:
       - {name: hyper121p, nodes:[hyper121, hyper122, hyper123]}
       - {name: hyper122p, nodes:[hyper122, hyper123, hyper121]}
       - {name: hyper123p, nodes:[hyper123, hyper121, hyper122]}
-    vms: []
+    vms:
+      - {name: test1, fd: hyper121p}
+      - {name: test2, fd: hyper121p}

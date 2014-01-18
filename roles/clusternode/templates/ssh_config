@@ -69,4 +69,15 @@ Host {{ hostvars[h]['ansible_ssh_host'] }}
 Host {{ h }}
     GSSAPIAuthentication yes
     StrictHostKeyChecking no
+
+Host {{ h }}.bcn
+    GSSAPIAuthentication yes
+    StrictHostKeyChecking no
+
+{% if hostvars[h]['bcn_iface'] is defined and hostvars[h]['ansible_' + hostvars[h]['bcn_iface']]['ipv4']['address'] is defined %}
+Host {{ hostvars[h]['ansible_' + hostvars[h]['bcn_iface']]['ipv4']['address'] }}
+    GSSAPIAuthentication yes
+    StrictHostKeyChecking no
+
+{% endif %}
 {% endfor %}

@@ -20,6 +20,11 @@
     - rgmanager
   tags: [clusternode, packages]
 
+- name: copy cluster_vm_on_fuse policy file
+  copy: src=cluster_vm_on_fuse.pp dest=/opt/
+  notify: install selinux policy
+  tags: [clusternode, clusterpolicy]
+
 - name: set ricci password
   user: name=ricci update_password=always password={{ ricci_password }}
   tags: [clusternode, ricci_password]

@@ -3,3 +3,5 @@
   shell: cman_tool version -r -S
   when: master_node|int == node_id|int
 
+- name: install selinux policy
+  shell: semodule -i /opt/cluster_vm_on_fuse.pp
