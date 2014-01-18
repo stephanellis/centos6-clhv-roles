@@ -1,0 +1,13 @@
+#! /bin/bash
+
+VM=$1
+POOL=$2
+POOLPATH=$(virsh pool-dumpxml vpool1 | grep '<path>' | sed -e 's/.*<path>\(.*\)<\/path>.*/\1/')
+
+if [ ! -d "$POOLPATH/def" ]; then
+	mkdir $POOLPATH/def
+fi
+
+virsh dumpxml $VM > $POOLPATH/def/$VM.xml
+
+poolfixperms $POOL
