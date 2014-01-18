@@ -1,5 +1,6 @@
-CentOS 6 Roles
-==============
+CentOS 6 Roles for Clustered Hypervisors
+========================================
+
 
 Ansible roles for CentOS (maybe RHEL) 6. The main goal is to
 provide best practices configuration for clusters of hypervisors
