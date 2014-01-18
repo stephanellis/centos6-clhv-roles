@@ -38,6 +38,3 @@ ansible labcluster -a "mkdir /var/lib/libvirt/images/vpool1"
 ansible labcluster -a "virsh pool-start vpool1"
 ansible labcluster -a "virsh pool-autostart vpool1"
 
-ansible labcluster -m copy -a "src=extras/iso-sn1.xml dest=/tmp/"
-ansible labcluster -a "virsh pool-define /tmp/iso-sn1.xml"
-

@@ -1,0 +1,7 @@
+#! /bin/bash
+
+
+POOL=$1
+POOLPATH=$(virsh pool-dumpxml vpool1 | grep '<path>' | sed -e 's/.*<path>\(.*\)<\/path>.*/\1/')
+
+chown -R qemu:kvm $POOLPATH/*
