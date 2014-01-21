@@ -52,6 +52,10 @@
     - partitions.conf
   tags: [infiniband, configs]
 
+- name: inifiniband mlx4 tuning module options
+  copy: src=mlx4.conf dest=/etc/modprobe.d/
+  tags: [infiniband, configs, mlx4tune]
+
 - name: run interface templates
   template: src={{ item }} dest=/etc/sysconfig/network-scripts
   with_items:
