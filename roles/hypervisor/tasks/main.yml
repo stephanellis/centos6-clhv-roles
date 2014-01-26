@@ -25,11 +25,8 @@
   tags: [glusterfs, client, selinux]
 
 - name: copy libvirt configs
-  copy: src={{ item }} dest=/etc/libvirt/
-  with_items:
-    - libvirt.conf
-    - libvirtd.conf
-    - qemu.conf
+  template: src=qemu.conf dest=/etc/libvirt/
+  when: qemu_dynamic_ownsership is define
   tags: [hypervisor, configs, hypervisorconfigs]
   notify: restart libvirtd
 
